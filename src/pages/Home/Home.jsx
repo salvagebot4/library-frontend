@@ -3,7 +3,7 @@ import './Home.css';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>The Book Nook Home Page</div>
   )
 }
 
