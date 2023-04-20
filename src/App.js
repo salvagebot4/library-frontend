@@ -11,6 +11,7 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route exact path="/" element={<Pages.Home/>}/>
+        <Route exact path="/about" element={<Pages.About/>}/>
 
       </Routes>
     </>
