@@ -16,7 +16,7 @@ function SignUpModal({ onClose }) {
   };
 
   return (
-    <Modal show onHide={onClose} style={{backgroundColor: "#a61b1b"}}>
+    <Modal show onHide={onClose} style={{backgroundColor: "#989898"}}>
       <Modal.Header>
         <Modal.Title>Sign Up</Modal.Title>
         <Button variant="light" onClick={onClose}>X</Button>
