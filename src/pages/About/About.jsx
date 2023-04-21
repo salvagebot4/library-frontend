@@ -5,8 +5,7 @@ const About = () => {
   return (
     <div>
         <h1>
-            About Page 
-
+            Book Nook 
         </h1>
         <h2>
             More Words
