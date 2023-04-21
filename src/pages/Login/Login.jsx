@@ -7,7 +7,7 @@ import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './Login.css';
-import * as Modals from '../../components';
+import * as Components from '../../components';
 
 const Login = () => {
     const [showModal, setShowModal] = useState(false);
@@ -53,7 +53,7 @@ const Login = () => {
                 </Form>
                 <br />
                 <p>Don't have an account? <Button variant="link" onClick={handleSignUpButton}>Sign up</Button></p>
-                {showModal && <Modals.SignUpModal onClose={handleCloseModal} />}
+                {showModal && <Components.SignUpModal onClose={handleCloseModal} />}
             </Col>
           </Row>
         </Container>

@@ -1,14 +1,17 @@
 import { React } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import * as Pages from './pages';
+import * as Components from './components';
 import AdminRoute from './Routes/adminRoute';
 import UserRoute from './Routes/userRoute';
 import './App.css';
+
 
 function App() {
 
   return (
     <>
+      <Components.Navbar />
       <Routes>
         {/* Public Routes */}
         <Route exact path="/" element={<Pages.Home/>}/>
