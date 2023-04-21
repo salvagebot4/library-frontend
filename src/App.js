@@ -13,6 +13,7 @@ function App() {
         {/* Public Routes */}
         <Route exact path="/" element={<Pages.Home/>}/>
         <Route exact path="/about" element={<Pages.About/>}/>
+        <Route exact path="/login" element={<Pages.Login />} />
 
         {/* Admin Routes */}
         <Route element={<AdminRoute />}>
