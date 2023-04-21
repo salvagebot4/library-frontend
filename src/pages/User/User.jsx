@@ -3,7 +3,9 @@ import './User.css';
 
 const User = () => {
   return (
-    <div>User Page (student or faculty)</div>
+    <div>
+      User Page (student or faculty) TODO: borrowing history
+    </div>
   )
 }
 
