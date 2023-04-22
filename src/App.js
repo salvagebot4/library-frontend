@@ -15,6 +15,7 @@ function App() {
         <Route exact path="/products" element={<Pages.Products/>}/>
         <Route exact path="/users" element={<Pages.Users/>}/>
         <Route exact path="/books" element={<Pages.Books/>}/>
+        <Route exact path="/media" element={<Pages.Media/>}/>
       </Routes>
     </>
   );
