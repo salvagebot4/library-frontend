@@ -16,6 +16,11 @@ function App() {
         {/* Public Routes */}
         <Route exact path="/" element={<Pages.Home/>}/>
         <Route exact path="/about" element={<Pages.About/>}/>
+        <Route exact path="/products" element={<Pages.Products/>}/>
+        <Route exact path="/users" element={<Pages.Users/>}/>
+        <Route exact path="/products/books" element={<Pages.Books/>}/>
+        <Route exact path="/products/media" element={<Pages.Media/>}/>
+        <Route exact path="/products/devices" element={<Pages.Devices/>}/>
         <Route exact path="/login" element={<Pages.Login />} />
 
         {/* Admin Routes */}
@@ -29,7 +34,6 @@ function App() {
           <Route element={<Pages.Home />} path="/" exact />
           <Route element={<Pages.User />} path="/user" />
         </Route>
-
       </Routes>
     </>
   );
