@@ -1,9 +1,10 @@
 import React from 'react';
 import './Books.css';
+import { Link } from 'react-router-dom';
 
 const Books = () => {
   return (
-    <div>
+    <div> 
       <h1>Book Management</h1>
       
       <h2>Add Book</h2>
@@ -65,6 +66,10 @@ const Books = () => {
         
         <input type="submit" value="Delete Book" />
       </form>
+
+      <Link to="/bookslist">
+        <button>View Books List</button>
+      </Link>
     </div>
   );
 };

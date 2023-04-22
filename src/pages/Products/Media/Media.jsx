@@ -1,5 +1,6 @@
 import React from 'react';
 import './Media.css';
+import { Link } from 'react-router-dom';
 
 const Media = () => {
     return (
@@ -65,7 +66,10 @@ const Media = () => {
               
                 <input type="submit" value="Delete Media" />
             </form>
-        </div>
+            <Link to="/medialist">
+        <button>View Media List</button>
+      </Link>
+    </div>
     );
 };
 
