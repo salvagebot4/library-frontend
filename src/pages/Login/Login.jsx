@@ -6,6 +6,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import axios from "axios";
 import './Login.css';
 import * as Components from '../../components';
 
@@ -25,9 +26,56 @@ const Login = () => {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        console.log(`Logging in with email ${email} and password ${password}`);
+        console.log(`Attempting to login in with email: ${email}`);
 
         navigate('/');
+
+        const options = {
+            method: 'POST',
+            url: 'https://library-management-server.herokuapp.com/api/login',
+            headers: {'Content-Type': 'application/json'},
+            data: { email, password }
+        };
+
+        try {
+            const response = await axios.request(options);
+            
+            const responseData = response.data;
+
+            //console.log(responseData[0]);
+
+            for (const key in responseData[0]) {
+                if (responseData[0].hasOwnProperty(key)) {
+                    const value = responseData[0][key];
+                    //console.log(key + ': ' + value);
+                    localStorage.setItem(key, value);
+                }
+            }
+            
+            const role = localStorage.getItem('role');
+
+            console.log(role);
+            if (role === 'admin') 
+            {
+                navigate('/admin');
+            } 
+            else if (role === 'user')
+            {
+                navigate('/customer');
+            }
+            else 
+            {
+                navigate('/');
+            }
+
+            } catch (error) {
+                console.error(error);
+                alert("FORBIDDEN");
+                console.log("FORBIDDEN");
+            }
+
+
+
     };
 
 
