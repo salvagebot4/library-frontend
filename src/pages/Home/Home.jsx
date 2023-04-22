@@ -15,18 +15,6 @@ const Home = () => {
       </div>
 
       <div className="option-container">
-        <h2>Book Management</h2>
-        <p>Manage your books, including adding, editing, and deleting them.</p>
-        <Link to="/books"><button>Go to Book Management</button></Link>
-      </div>
-
-      <div className="option-container">
-        <h2>Media Management</h2>
-        <p>Manage your media, including adding, editing, and deleting them.</p>
-        <Link to="/media"><button>Go to Media Management</button></Link>
-      </div>
-
-      <div className="option-container">
         <h2>User Management</h2>
         <p>Create and manage users.</p>
         <Link to="/users"><button>Create a User</button></Link>
