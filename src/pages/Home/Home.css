@@ -54,3 +54,7 @@
   background-image: url('/public/library-background.jpg');
   background-size: cover;
 }
+.featured-card {
+    margin: 2rem;
+    background-color: rgb(167, 167, 167) !important;
+}

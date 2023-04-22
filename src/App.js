@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { React } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import * as Pages from './pages';
+import * as Components from './components';
+import AdminRoute from './Routes/adminRoute';
+import UserRoute from './Routes/userRoute';
 import './App.css';
 
+
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <>
+      <Components.Navbar />
       <Routes>
         {/* Public Routes */}
         <Route exact path="/" element={<Pages.Home/>}/>
@@ -17,6 +21,19 @@ function App() {
         <Route exact path="/products/books" element={<Pages.Books/>}/>
         <Route exact path="/products/media" element={<Pages.Media/>}/>
         <Route exact path="/products/devices" element={<Pages.Devices/>}/>
+        <Route exact path="/login" element={<Pages.Login />} />
+
+        {/* Admin Routes */}
+        <Route element={<AdminRoute />}>
+          <Route element={<Pages.Home />} path="/" exact />
+          <Route element={<Pages.Admin />} path="/admin" />
+        </Route>
+
+        {/* User Routes */}
+        <Route element={<UserRoute />}>
+          <Route element={<Pages.Home />} path="/" exact />
+          <Route element={<Pages.User />} path="/user" />
+        </Route>
       </Routes>
     </>
   );
