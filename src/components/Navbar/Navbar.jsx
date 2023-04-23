@@ -11,6 +11,9 @@ function NavBar() {
         navigate('/login');
     }
 
+    //create button to user management page /users <- this is a route on the frontend not api
+    
+
 
   return (
     <Navbar bg="dark" expand="lg">
