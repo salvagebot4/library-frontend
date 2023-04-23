@@ -10,3 +10,4 @@ export { default as Admin } from './Admin/Admin';
 export { default as Login } from './Login/Login'; 
 export { default as Fine } from './Fine/Fine';
 export { default as Hold } from './Hold/Hold';
+export { default as StudentReservation } from './StudentReservation/StudentReservation';
