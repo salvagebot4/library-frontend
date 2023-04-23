@@ -4,10 +4,6 @@
     background-color: white !important;
     color: #fff;
   }
-  .library-background {
-    background-image: url("/public/library-background.jpg");
-    /* other styles */
-  }
   
   h1 {
     font-size: 4em;
@@ -49,11 +45,6 @@
     background-color: #fff;
 }
   
-  body {
-  background-color: #f2f2f2;
-  background-image: url('/public/library-background.jpg');
-  background-size: cover;
-}
 .featured-card {
     margin: 2rem;
     background-color: rgb(167, 167, 167) !important;
