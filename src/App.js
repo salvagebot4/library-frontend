@@ -22,6 +22,8 @@ function App() {
         <Route exact path="/products/media" element={<Pages.Media/>}/>
         <Route exact path="/products/devices" element={<Pages.Devices/>}/>
         <Route exact path="/login" element={<Pages.Login />} />
+        <Route exact path="/StudentReservation" element={<Pages.StudentReservation />} />
+        <Route exact path="/products/books/bookslist" element={<Pages.BooksList />} />
 
         {/* Admin Routes */}
         <Route element={<AdminRoute />}>
@@ -33,7 +35,7 @@ function App() {
         <Route element={<UserRoute />}>
           <Route element={<Pages.Home />} path="/" exact />
           <Route element={<Pages.User />} path="/user" />
-        </Route>
+          </Route>
       </Routes>
     </>
   );

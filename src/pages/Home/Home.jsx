@@ -1,10 +1,10 @@
-import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  return (
 
+  return (
     <div className="home">
       <Container>
         <Row>
