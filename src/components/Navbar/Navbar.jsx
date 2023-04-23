@@ -45,6 +45,24 @@ function NavBar() {
               </Nav>
             </div>
           )}
+          {role && (
+            <div className="nav-button mx-3">
+              <Nav>
+                <Link to="products">
+                  <Button variant="outline-light">Products</Button>
+                </Link>
+               </Nav>
+            </div>
+          )}
+          {role && (
+            <div className="nav-button mx-3">
+              <Nav>
+                <Link to="users">
+                <Button variant="outline-light">Users</Button>
+                </Link>
+              </Nav>
+            </div>
+          )}
         </Navbar.Collapse>
       </Navbar>
     );

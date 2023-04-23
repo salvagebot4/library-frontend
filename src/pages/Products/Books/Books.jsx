@@ -1,14 +1,76 @@
 import React from 'react';
 import './Books.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import BooksList from './BooksList';
 
 const Books = () => {
+  const handleAddBook = (event) => {
+    event.preventDefault();
+
+    const book = {
+      name: event.target.elements['book-name'].value,
+      author: event.target.elements['book-author'].value,
+      publisher: event.target.elements['book-publisher'].value,
+      publicationDate: event.target.elements['book-publication-date'].value,
+      pageCount: event.target.elements['book-page-count'].value,
+      description: event.target.elements['book-description'].value,
+      productId: event.target.elements['book-product-id'].value,
+    };
+
+    axios.post('/api/products/books', book)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleDeleteBook = (event) => {
+    event.preventDefault();
+  
+    const productId = event.target.elements['book-product-id'].value;
+  
+    axios.delete(`/api/products/books/${productId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  const handleEditBook = (event) => {
+    event.preventDefault();
+  
+    const productId = event.target.elements['book-product-id'].value;
+  
+    const updatedBook = {
+      name: event.target.elements['book-name'].value,
+      author: event.target.elements['book-author'].value,
+      publisher: event.target.elements['book-publisher'].value,
+      publicationDate: event.target.elements['book-publication-date'].value,
+      pageCount: event.target.elements['book-page-count'].value,
+      description: event.target.elements['book-description'].value,
+    };
+  
+    axios.put(`/api/books/${productId}`, updatedBook)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+
   return (
     <div> 
       <h1>Book Management</h1>
       
       <h2>Add Book</h2>
-      <form>
+      <form onSubmit={handleAddBook}>
         <label htmlFor="book-name">Book Name:</label>
         <input type="text" id="book-name" name="book-name" /><br />
         
@@ -34,7 +96,7 @@ const Books = () => {
       </form>
       
       <h2>Edit Book</h2>
-      <form>
+      <form onSubmit={handleEditBook}>
         <label htmlFor="book-product-id">Product ID:</label>
         <input type="text" id="book-product-id" name="book-product-id" /><br />
         
@@ -60,15 +122,16 @@ const Books = () => {
       </form>
       
       <h2>Delete Book</h2>
-      <form>
+      <form onSubmit={handleDeleteBook}>
         <label htmlFor="book-product-id">Product ID:</label>
         <input type="text" id="book-product-id" name="book-product-id" /><br />
         
         <input type="submit" value="Delete Book" />
       </form>
 
-      <Link to="/bookslist">
+      <Link to="/products/books/bookslist">
         <button>View Books List</button>
+
       </Link>
     </div>
   );
