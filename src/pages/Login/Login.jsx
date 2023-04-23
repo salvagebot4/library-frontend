@@ -73,12 +73,7 @@ const Login = () => {
                 alert("FORBIDDEN");
                 console.log("FORBIDDEN");
             }
-
-
-
     };
-
-
     return (
         <Container>
           <Row>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Media.css';
+import {Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Media = () => {

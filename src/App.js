@@ -5,7 +5,7 @@ import * as Components from './components';
 import AdminRoute from './Routes/adminRoute';
 import UserRoute from './Routes/userRoute';
 import './App.css';
-
+import BookList from './pages/Products/Books/BookList';
 
 function App() {
 
@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/products" element={<Pages.Products/>}/>
         <Route exact path="/users" element={<Pages.Users/>}/>
         <Route exact path="/products/books" element={<Pages.Books/>}/>
+        <Route exact path="/BookList" element={<BookList/>}/>
         <Route exact path="/products/media" element={<Pages.Media/>}/>
         <Route exact path="/products/devices" element={<Pages.Devices/>}/>
         <Route exact path="/login" element={<Pages.Login />} />
@@ -28,12 +29,20 @@ function App() {
           <Route element={<Pages.Home />} path="/" exact />
           <Route element={<Pages.Admin />} path="/admin" />
         </Route>
+   
+
+
 
         {/* User Routes */}
         <Route element={<UserRoute />}>
           <Route element={<Pages.Home />} path="/" exact />
-          <Route element={<Pages.User />} path="/user" />
+          <Route element={<Pages.User />} path="/users"  exact/>
         </Route>
+
+
+
+
+
       </Routes>
     </>
   );

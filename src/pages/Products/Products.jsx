@@ -1,6 +1,10 @@
 import React from 'react';
 import './Products.css';
 import { Link } from 'react-router-dom';
+//TODO handle submits for Books, Media, and Devices
+
+
+
 
 const Products = () => {
     return (

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './Home.css';
 
+import './Home.css';
+/*Need links to the Borrow Now and Learn More button */
 const Home = () => {
   return (
 
@@ -9,9 +10,10 @@ const Home = () => {
       <Container>
         <Row>
           <Col>
-            <h1>Welcome to The Book Nook</h1>
+            <h1>Welcome to The Book Nook!</h1>
             <p>We offer a wide variety of books, media, devices, and more for borrowing. Use the search bar to find what you're looking for.</p>
-            <Button variant="primary" href="#borrow">Borrow Now</Button>
+
+            <Button variant="primary" href="/products/books">Borrow Now</Button>
           </Col>
           <Col>
             <Card className="featured-card">

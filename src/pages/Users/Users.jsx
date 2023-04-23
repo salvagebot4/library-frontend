@@ -3,13 +3,6 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './Users.css';
 import axios from 'axios';
 
-//TODO: 
-// make a form for password entry
-
-// capture all variables (email and password from form)
-// and save them in useState variables to pass through axios request.
-
-// change the dropdown to reflect our schema
 
 
 const Users = () => {
@@ -65,6 +58,7 @@ const Users = () => {
               <option value="">Select a user type</option>
               <option value="student">Student</option>
               <option value="faculty">Faculty</option>
+              <option value="admin">Admin</option>
             </select><br />
             <input type="submit" value="Create User" onClick={handleCreateUser} />
           </form>
