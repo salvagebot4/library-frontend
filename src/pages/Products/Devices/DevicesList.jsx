@@ -17,18 +17,6 @@ const DevicesList = () => {
       .catch((error) => {
         console.log(error);
       });
-    axios.get('https://library-management-server.herokuapp.com/api/products')
-      .then((response) => {
-        setProducts(response.data);
-        //console.log(books);
-        //console.log(products);
-        for (const obj of devices) {
-          console.log(obj.product_id);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }, []);
 
   return (
