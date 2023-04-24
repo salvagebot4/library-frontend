@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const MediaList = () => {
-  const [media, setMedia] = useState([]);
+  const [medias, setMedia] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,9 +26,9 @@ const MediaList = () => {
     <div>
       <h1>Media List</h1>
       <ul>
-        {media.map((item) => (
-          <li key={item.product_id}>
-            <strong>{item.product_id}</strong> by {item.manufacturer} 
+        {medias.map((media) => (
+          <li key={media.product_id}>
+            <strong>{media.product_id}</strong> by {media.author}
           </li>
         ))}
       </ul>
