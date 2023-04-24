@@ -2,23 +2,23 @@ import React from 'react';
 import './Books.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import BooksList from './BooksList';
+//import BooksList from './BooksList';
 
 const Books = () => {
   const handleAddBook = (event) => {
     event.preventDefault();
 
     const book = {
-      name: event.target.elements['book-name'].value,
+      product_name: event.target.elements['book-name'].value,
       author: event.target.elements['book-author'].value,
       publisher: event.target.elements['book-publisher'].value,
-      publicationDate: event.target.elements['book-publication-date'].value,
-      pageCount: event.target.elements['book-page-count'].value,
+      publication_date: event.target.elements['book-publication-date'].value,
+      page_count: event.target.elements['book-page-count'].value,
       description: event.target.elements['book-description'].value,
-      productId: event.target.elements['book-product-id'].value,
+      product_id: event.target.elements['book-id'].value,
     };
 
-    axios.post('/api/products/books', book)
+    axios.post('/api/add-book', book)
       .then((response) => {
         console.log(response);
       })
@@ -32,7 +32,7 @@ const Books = () => {
   
     const productId = event.target.elements['book-product-id'].value;
   
-    axios.delete(`/api/products/books/${productId}`)
+    axios.delete(`/api/update-book/${productId}`)
       .then((response) => {
         console.log(response);
       })
@@ -47,15 +47,15 @@ const Books = () => {
     const productId = event.target.elements['book-product-id'].value;
   
     const updatedBook = {
-      name: event.target.elements['book-name'].value,
+      product_name: event.target.elements['book-name'].value,
       author: event.target.elements['book-author'].value,
       publisher: event.target.elements['book-publisher'].value,
-      publicationDate: event.target.elements['book-publication-date'].value,
-      pageCount: event.target.elements['book-page-count'].value,
+      publication_date: event.target.elements['book-publication-date'].value,
+      page_count: event.target.elements['book-page-count'].value,
       description: event.target.elements['book-description'].value,
     };
   
-    axios.put(`/api/books/${productId}`, updatedBook)
+    axios.put(`/api/update-book${productId}`, updatedBook)
       .then((response) => {
         console.log(response);
       })

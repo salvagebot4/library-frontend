@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const DevicesList = () => {
-  const [devices, setDevices] = useState([]);
+const MediaList = () => {
+  const [medias, setMedia] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://library-management-server.herokuapp.com/api/products/devices')
+    axios.get('https://library-management-server.herokuapp.com/api/products/medias')
       .then((response) => {
-        setDevices(response.data);
+        setMedia(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -16,9 +16,6 @@ const DevicesList = () => {
     axios.get('https://library-management-server.herokuapp.com/api/products')
       .then((response) => {
         setProducts(response.data);
-        for(const obj of devices){
-          console.log(obj.product_id)
-        }
       })
       .catch((error) => {
         console.log(error);
@@ -27,11 +24,11 @@ const DevicesList = () => {
 
   return (
     <div>
-      <h1>Devices List</h1>
+      <h1>Media List</h1>
       <ul>
-        {devices.map((device) => (
-          <li>
-            <strong>{device.product_id}</strong> by {device.manufacturer} 
+        {medias.map((media) => (
+          <li key={media.product_id}>
+            <strong>{media.product_id}</strong> by {media.author}
           </li>
         ))}
       </ul>
@@ -39,4 +36,4 @@ const DevicesList = () => {
   );
 };
 
-export default DevicesList;
+export default MediaList;

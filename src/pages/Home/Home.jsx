@@ -11,7 +11,7 @@ const Home = () => {
           <Col>
             <h1>Welcome to The Book Nook</h1>
             <p>We offer a wide variety of books, media, devices, and more for borrowing. Use the search bar to find what you're looking for.</p>
-            <Button variant="primary" href="#borrow">Borrow Now</Button>
+            <Link to="/studentreservation"><Button variant="primary">Borrow Now</Button></Link>
           </Col>
           <Col>
             <Card className="featured-card">
