@@ -1,9 +1,9 @@
 import React from 'react';
-import './Products.css';
+// import './Products.css';
 import { Link } from 'react-router-dom';
 
 const Products = () => {
-    return (
+ return (
         <div>
             <h1>Product Management</h1>
             <div className="option-container">
