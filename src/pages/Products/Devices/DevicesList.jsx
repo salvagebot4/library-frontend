@@ -3,26 +3,14 @@ import axios from 'axios';
 
 const DevicesList = () => {
   const [devices, setDevices] = useState([]);
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios.get('https://library-management-server.herokuapp.com/api/products/devices')
       .then((response) => {
-        setDevices(response.data);
+        const filteredDevices = response.data.filter(device => !device.is_deleted);
+        setDevices(filteredDevices);
         // Move the loop inside the `then` block for the first `axios.get`
         for (const obj of response.data) {
-          console.log(obj.product_id);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get('https://library-management-server.herokuapp.com/api/products')
-      .then((response) => {
-        setProducts(response.data);
-        //console.log(books);
-        //console.log(products);
-        for (const obj of devices) {
           console.log(obj.product_id);
         }
       })
@@ -37,7 +25,7 @@ const DevicesList = () => {
       <ul>
         {devices.map((device) => (
           <li>
-            <strong>{device.product_id}</strong> by {device.manufacturer} 
+            <strong>{device.product_id} {`${device.is_deleted}`}</strong> by {device.manufacturer} 
           </li>
         ))}
       </ul>
