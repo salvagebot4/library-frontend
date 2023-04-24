@@ -12,9 +12,6 @@ function NavBar() {
     }
 
     //create button to user management page /users <- this is a route on the frontend not api
-    
-
-
     return (
       <Navbar bg="dark" expand="lg">
         <Link to="/" className="nav-button mx-3 text-decoration-none">
@@ -48,6 +45,7 @@ function NavBar() {
               </Nav>
             </div>
           )}
+
           {role && (
             <div className="nav-button mx-3">
               <Nav>

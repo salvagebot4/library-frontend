@@ -28,7 +28,7 @@ const Login = () => {
         event.preventDefault();
         console.log(`Attempting to login in with email: ${email}`);
 
-        //navigate('/');
+        navigate('/');
 
         const options = {
             method: 'POST',
