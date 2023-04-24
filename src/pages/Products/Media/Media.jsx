@@ -66,7 +66,7 @@ const Media = () => {
               
                 <input type="submit" value="Delete Media" />
             </form>
-            <Link to="/medialist">
+            <Link to="/products/media/medialist">
         <button>View Media List</button>
       </Link>
     </div>

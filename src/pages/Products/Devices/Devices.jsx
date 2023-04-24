@@ -141,7 +141,7 @@ const Devices = () => {
       </form>
 
 
-      <Link to="/products/books/deviceslist">
+      <Link to="/products/devices/deviceslist">
         <button>View Devices List</button>
 
       </Link>
