@@ -9,6 +9,10 @@ const DevicesList = () => {
     axios.get('https://library-management-server.herokuapp.com/api/products/devices')
       .then((response) => {
         setDevices(response.data);
+        // Move the loop inside the `then` block for the first `axios.get`
+        for (const obj of response.data) {
+          console.log(obj.product_id);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -16,8 +20,10 @@ const DevicesList = () => {
     axios.get('https://library-management-server.herokuapp.com/api/products')
       .then((response) => {
         setProducts(response.data);
-        for(const obj of devices){
-          console.log(obj.product_id)
+        //console.log(books);
+        //console.log(products);
+        for (const obj of devices) {
+          console.log(obj.product_id);
         }
       })
       .catch((error) => {

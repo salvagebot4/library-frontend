@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const DevicesList = () => {
-  const [devices, setDevices] = useState([]);
+const BooksList = () => {
+  const [books, setBooks] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://library-management-server.herokuapp.com/api/products/devices')
+    axios.get('https://library-management-server.herokuapp.com/api/products/books')
       .then((response) => {
-        setDevices(response.data);
+        setBooks(response.data);
+        //console.log(books);
       })
       .catch((error) => {
         console.log(error);
@@ -16,9 +17,14 @@ const DevicesList = () => {
     axios.get('https://library-management-server.herokuapp.com/api/products')
       .then((response) => {
         setProducts(response.data);
-        for(const obj of devices){
-          console.log(obj.product_id)
+        //console.log(books);
+        //console.log(products);
+        for(const obj of books){
+            console.log(obj.product_id)
+            
         }
+
+
       })
       .catch((error) => {
         console.log(error);
@@ -27,11 +33,11 @@ const DevicesList = () => {
 
   return (
     <div>
-      <h1>Devices List</h1>
+      <h1>Books List</h1>
       <ul>
-        {devices.map((device) => (
+        {books.map((book) => (
           <li>
-            <strong>{device.product_id}</strong> by {device.manufacturer} 
+            <strong>{book.product_name}</strong> by {book.author} 
           </li>
         ))}
       </ul>
@@ -39,4 +45,4 @@ const DevicesList = () => {
   );
 };
 
-export default DevicesList;
+export default BooksList;
