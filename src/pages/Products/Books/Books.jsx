@@ -1,80 +1,52 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './Books.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 //import BooksList from './BooksList';
 
-const Books = () => {
-  const handleAddBook = (event) => {
-    event.preventDefault();
-  
-    const book = {
-      product_type_id: '1', // hardcoded
-      //product_name: event.target.elements['book-name'].value,
-      //cost: event.target.elements['book-cost'].value,
-      //fine_multiplier: event.target.elements['book-fine-multiplier'].value,
-      product_id: event.target.elements['product-id'].value,
-      author: event.target.elements['author'].value,
-      description: event.target.elements['description'].value,
-      publisher: event.target.elements['publisher'].value,
-      publication_date: event.target.elements['publication-date'].value,
-      page_count: event.target.elements['page-count'].value,
-    };
+//to do list
+// set equal to zero (useState = (0) for cost / fine_mult, name is empty string
+// add variable for fine_multiplier, product_name, and cost
+// add forms for fine_multiplier, product_name, and cost
+// test forms with console.log()
+//create route to make product
 
+const Books = () => {
+  const product_type_id = 1; //ensures that the type of product is a book
+  const [author, setAuthor] = useState('');
+  const [description, setDescription] = useState('');
+  const [publisher, setPublisher] = useState('');
+  const [publication_date, setPublicationDate] = useState('');
+  const [product_id, setProductID] = useState('');
+  const [page_count, setPageCount ] = useState(0);
+
+
+  const handleAddBook = async (event) => {
+    event.preventDefault();
       const options = {
         method: 'POST',
         url: 'https://library-management-server.herokuapp.com/api/add-book',
-        headers: {''},
-        data: {  }
+        headers: {'Content-Type': 'application/json'},
+        data: { product_id, description, publisher, publication_date, author, page_count }
       }
+      try {
+        console.log(product_id, description, publisher, publication_date, author, page_count);
 
-  /*
-    axios.post('https://library-management-server.herokuapp.com/api/add-book', book)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  */
-
-  const handleDeleteBook = (event) => {
-    event.preventDefault();
-  
-    const productId = event.target.elements['book-product-id'].value;
-  
-    axios.delete(`/api/update-book/${productId}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        //const response = await axios.request(options);
+        //const responseData = response.data;
+      }
+      catch(error){
+        console.error(error);
+      }
   };
   
-  const handleEditBook = (event) => {
+  const handleEditBook = async (event) => {
     event.preventDefault();
-  
-    const productId = event.target.elements['book-product-id'].value;
-  
-    const updatedBook = {
-      product_type_id: '1', // hardcoded
-      product_id: productId,
-      author: event.target.elements['book-author'].value,
-      description: event.target.elements['book-description'].value,
-      publisher: event.target.elements['book-publisher'].value,
-      publication_date: event.target.elements['book-publication-date'].value,
-      page_count: event.target.elements['book-page-count'].value,
-    };
-  
-    axios.put(`/api/update-book/${productId}`, updatedBook)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //to do:
+    //make put request that handles delete and edit
+      //method: 'PUT',
+      //url
+
   };
   
 
@@ -85,22 +57,22 @@ const Books = () => {
       <h2>Add Book</h2>
 <form onSubmit={handleAddBook}>
   <label htmlFor="author">Author:</label>
-  <input type="text" id="author" name="author" /><br />
+  <input type="text" id="author" name="author" value={author} onChange={(event) => setAuthor(event.target.value)} required /><br />
 
   <label htmlFor="description">Description:</label>
-  <textarea id="description" name="description"></textarea><br />
+  <textarea id="description" name="description" value={description} onChange={(event) => setDescription(event.target.value)} required ></textarea><br />
 
   <label htmlFor="publisher">Publisher:</label>
-  <input type="text" id="publisher" name="publisher" /><br />
+  <input type="text" id="publisher" name="publisher" value={publisher} onChange={(event) => setPublisher(event.target.value)} required /><br />
 
   <label htmlFor="publication-date">Publication Date:</label>
-  <input type="date" id="publication-date" name="publication-date" /><br />
+  <input type="date" id="publication-date" name="publication-date" value={publication_date} onChange={(event) => setPublicationDate(event.target.value)} required /><br />
 
   <label htmlFor="product-id">Product ID:</label>
-  <input type="text" id="product-id" name="product-id" /><br />
+  <input type="text" id="product-id" name="product-id" value={product_id} onChange={(event) => setProductID(event.target.value)} required /><br />
 
   <label htmlFor="page-count">Page Count:</label>
-  <input type="number" id="page-count" name="page-count" /><br />
+  <input type="number" id="page-count" name="page-count" value={page_count} onChange={(event) => setPageCount(event.target.value)} required /><br />
 
   <input type="submit" value="Add Book" />
 </form>
@@ -134,7 +106,7 @@ const Books = () => {
       </form>
       
       <h2>Delete Book</h2>
-      <form onSubmit={handleDeleteBook}>
+      <form onSubmit={handleEditBook}>
         <label htmlFor="book-product-id">Product ID:</label>
         <input type="text" id="book-product-id" name="book-product-id" /><br />
         
