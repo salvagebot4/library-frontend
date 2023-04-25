@@ -22,7 +22,7 @@ const MediaList = () => {
       <ul>
         {medias.map((media) => (
           <li key={media.product_id}>
-            <strong>{media.product_id}</strong> by {media.author}
+            <strong>{media.product_name}</strong> by {media.author}
           </li>
         ))}
       </ul>
