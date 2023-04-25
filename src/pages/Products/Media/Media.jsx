@@ -1,31 +1,26 @@
 import { React, useState } from 'react';
-import './Books.css';
+import './Media.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import BooksList from './BooksList';
 
-//to do list
-// set equal to zero (useState = (0) for cost / fine_mult, name is empty string
-// add variable for fine_multiplier, product_name, and cost
-// add forms for fine_multiplier, product_name, and cost
-// test forms with console.log()
+const Media = () => {
 
-
-const Books = () => {
-  const product_type_id = 1; //ensures that the type of product is a book
+    const product_type_id = 3; //ensures that the type of product is media
   const [author, setAuthor] = useState('');
   const [description, setDescription] = useState('');
   const [publisher, setPublisher] = useState('');
   const [publication_date, setPublicationDate] = useState('');
   const [product_id, setProductID] = useState('');
-  const [page_count, setPageCount ] = useState(0);
   const [product_name, setProductName ] = useState('');
+  const [file_size, setFileSize ] = useState(0);
+  const [is_interactive, setIsInteractive ] = useState(false);
   const [cost, setCost ] = useState(0);
   const [fine_multiplier, setFineMultiplier ] = useState(0);
   const [column_name, setColumnName] = useState('');
   const [new_value, setNewValue] = useState('');
 
-  const handleAddBook = async (event) => {
+
+  const handleAddMedia = async (event) => {
     event.preventDefault();
       const options1 = {
         method: 'POST',
@@ -35,34 +30,29 @@ const Books = () => {
       }
       const options2 = {
         method: 'POST',
-        url: 'https://library-management-server.herokuapp.com/api/add-book',
+        url: 'https://library-management-server.herokuapp.com/api/add-media',
         headers: {'Content-Type': 'application/json'},
-        data: { product_id, description, publisher, publication_date, author, page_count }
+        data: { product_id, description, publisher, publication_date, author, is_interactive, file_size }
       }
       try {
-        //options2: adding a book
-        //console.log(product_id, description, publisher, publication_date, author, page_count);
-        //console.log(product_name, cost, product_id, fine_multiplier);
+
         const response1 = await axios.request(options1);
         const response2 = await axios.request(options2);
-        //const responseData1 = response1.data;
-        //const responseData2 = response2.data;
-        //console.log(response1);
-        //console.log(response2);
-        alert(`book ${product_name} created. `);
+
+        alert(`media ${product_name} created. `);
 
       }
       catch(error){
         console.error(error);
-        alert(`error creating book. please check fields.`);
+        alert(`error creating media. please check fields.`);
       }
   };
   
-  const handleEditBook = async (event) => {
+  const handleEditMedia = async (event) => {
     event.preventDefault();
     const options1 = {
       method: 'PUT',
-      url: 'https://library-management-server.herokuapp.com/api/update-book',
+      url: 'https://library-management-server.herokuapp.com/api/update-media',
       headers: {'Content-Type': 'application/json'},
       data: { product_id, column_name, new_value }
       
@@ -79,7 +69,7 @@ const Books = () => {
 
   };
 
-  const handleDeleteBook = async (event) => {
+  const handleDeleteMedia = async (event) => {
     event.preventDefault();
     const options1 = {
       method: 'PUT',
@@ -102,10 +92,25 @@ const Books = () => {
 
   return (
     <div> 
-      <h1>Book Management</h1>
+      <h1>Media Management</h1>
       
-      <h2>Add Book</h2>
-<form onSubmit={handleAddBook}>
+      <h2>Add Media</h2>
+<form onSubmit={handleAddMedia}>
+
+<label> Product Name</label>
+  <input type="text" value={product_name} onChange={(event) => setProductName(event.target.value)} required /><br />
+
+<label> File Size</label>
+  <input type="text" value={file_size} onChange={(event) => setFileSize(event.target.value)} required /><br />
+
+  <label> Is Interactive</label>
+        <select value={is_interactive} onChange={(event) => setIsInteractive(event.target.value)}>
+                <option value=""></option>
+                <option value="true">yes</option>
+                <option value="false">no</option>
+              </select>
+              <br/>
+ 
   <label htmlFor="author">Author:</label>
   <input type="text" id="author" name="author" value={author} onChange={(event) => setAuthor(event.target.value)} required /><br />
 
@@ -121,11 +126,6 @@ const Books = () => {
   <label htmlFor="product-id">Product ID:</label>
   <input type="text" id="product-id" name="product-id" value={product_id} onChange={(event) => setProductID(event.target.value)} required /><br />
 
-  <label htmlFor="page-count">Page Count:</label>
-  <input type="number" id="page-count" name="page-count" value={page_count} onChange={(event) => setPageCount(event.target.value)} required /><br />
-
-  <label> Product Name</label>
-  <input type="text" value={product_name} onChange={(event) => setProductName(event.target.value)} required /><br />
 
   <label> Cost: </label>
   <input type="number" id="page-count" name="page-count" value={cost} onChange={(event) => setCost(event.target.value)} required /><br />
@@ -133,20 +133,20 @@ const Books = () => {
   <label> Fine Multiplier:</label>
   <input type="number" id="page-count" name="page-count" value={fine_multiplier} onChange={(event) => setFineMultiplier(event.target.value)} required /><br />
 
-  <input type="submit" value="Add Book" />
+  <input type="submit" value="Add Media" />
 </form>
 
 
       
-      <h2>Edit Book</h2>
-      <form onSubmit={handleEditBook}>
+      <h2>Edit Media</h2>
+      <form onSubmit={handleEditMedia}>
         <label>Product ID:</label>
         <input type="text" id="product-id" name="book-product-id" value={product_id} onChange={(event) => setProductID(event.target.value)} required /><br />
         
         <label>Column to Update:</label>
         <select value={column_name} onChange={(event) => setColumnName(event.target.value)}>
                 <option value=""></option>
-                <option value="author">Author</option>
+                <option value="author">Product ID</option>
                 <option value="description">Description</option>
                 <option value="publisher">Publisher</option>
                 <option value="page_count">Page Count</option>
@@ -155,24 +155,25 @@ const Books = () => {
         <label> New Value:</label>
         <input type="text" value={new_value} onChange={(event) => setNewValue(event.target.value)} required /><br />
         
-        <input type="submit" value="Update Book" />
+        <input type="submit" value="Update Media" />
       </form>
       
-      <h2>Delete Book</h2>
-      <form onSubmit={handleDeleteBook}>
+      <h2>Delete Media</h2>
+      <form onSubmit={handleDeleteMedia}>
         <label>Product ID:</label>
         <input type="text" id="book-product-id" name="book-product-id" value={product_id} onChange={(event) => setProductID(event.target.value)} required /><br />
         
-        <input type="submit" value="Delete Book" />
+        <input type="submit" value="Delete Media" />
       </form>
 
 
-      <Link to="/products/books/bookslist">
-        <button>View Books List</button>
+      <Link to="/products/media/medialist">
+        <button>View Media List</button>
 
       </Link>
     </div>
   );
 };
 
-export default Books;
+
+export default Media;

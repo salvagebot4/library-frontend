@@ -3,28 +3,14 @@ import axios from 'axios';
 
 const BooksList = () => {
   const [books, setBooks] = useState([]);
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios.get('https://library-management-server.herokuapp.com/api/products/books')
       .then((response) => {
-        setBooks(response.data);
-        //console.log(books);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get('https://library-management-server.herokuapp.com/api/products')
-      .then((response) => {
-        setProducts(response.data);
-        //console.log(books);
-        //console.log(products);
-        for(const obj of books){
-            console.log(obj.product_id)
-            
-        }
+        const filteredBooks = response.data.filter(book => !book.is_deleted);
+        setBooks(filteredBooks);
 
-
+        //console.log(books);
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +23,7 @@ const BooksList = () => {
       <ul>
         {books.map((book) => (
           <li>
-            <strong>{book.product_name}</strong> by {book.author} 
+            <strong>{book.product_name} {book.product_id}</strong> by {book.author} 
           </li>
         ))}
       </ul>

@@ -3,19 +3,13 @@ import axios from 'axios';
 
 const MediaList = () => {
   const [medias, setMedia] = useState([]);
-  const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
     axios.get('https://library-management-server.herokuapp.com/api/products/medias')
       .then((response) => {
-        setMedia(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get('https://library-management-server.herokuapp.com/api/products')
-      .then((response) => {
-        setProducts(response.data);
+        const filteredMedia = response.data.filter(media => !media.is_deleted);
+        setMedia(filteredMedia);
       })
       .catch((error) => {
         console.log(error);
@@ -28,7 +22,7 @@ const MediaList = () => {
       <ul>
         {medias.map((media) => (
           <li key={media.product_id}>
-            <strong>{media.product_id}</strong> by {media.author}
+            <strong>{media.product_name}</strong> by {media.author}
           </li>
         ))}
       </ul>
