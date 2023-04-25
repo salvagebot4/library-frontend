@@ -18,6 +18,10 @@ function App() {
         <Route exact path="/about" element={<Pages.About/>}/>
 
         <Route exact path="/products" element={<Pages.Products/>}/>
+
+
+
+
         {/* <Route exact path="/users" element={<Pages.Users/>}/> */}
         <Route exact path="/products/books" element={<Pages.Books/>}/>
         <Route exact path="/products/books/bookslist" element={<Pages.BooksList />} />
@@ -25,7 +29,6 @@ function App() {
         <Route exact path="/products/media/medialist" element={<Pages.MediaList/>}/>
         <Route exact path="/products/devices" element={<Pages.Devices/>}/>
         <Route exact path="/products/deviceslist" element={<Pages.DevicesList/>}/>
-
 
         <Route exact path="/login" element={<Pages.Login />} />
         <Route exact path="/StudentReservation" element={<Pages.StudentReservation />} />
@@ -38,7 +41,7 @@ function App() {
         {/* User Routes */}
         <Route element={<UserRoute />}>
           <Route element={<Pages.Home />} path="/" exact />
-          <Route element={<Pages.User />} path="/user" />
+          <Route  exact path="/user" element={<Pages.User />}/>
         </Route>
 
       </Routes>
